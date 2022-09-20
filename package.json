@@ -1,0 +1,34 @@
+{
+  "name": "stackmat",
+  "version": "1.0.0",
+  "description": "Subscribe to events received from a Stackmat timer connected to the browser via the HTML5 Audio API.",
+  "keywords": [
+    "Stackmat",
+    "Rubik's Cube"
+  ],
+  "files": [
+    "dist/**/*"
+  ],
+  "browser": "dist/module/index.js",
+  "types": "dist/module/index.d.ts",
+  "unpkg": "dist/umd/stackmat.min.js",
+  "scripts": {
+    "build": "npm run build:ts && npm run build:umd && npm run build:umd:min",
+    "build:ts": "tsc",
+    "build:umd": "rollup -c",
+    "build:umd:min": "rollup -c --environment BUILD:minify",
+    "lint": "tslint -p tsconfig.json",
+    "prepack": "npm run build",
+    "watch": "concurrently npm:watch:ts npm:watch:umd",
+    "watch:ts": "tsc --watch",
+    "watch:umd": "rollup -c --watch"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "rollup": "^2.67.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslint": "^6.1.3",
+    "typescript": "^4.5.5"
+  }
+}
